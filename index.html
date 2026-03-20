@@ -7,334 +7,192 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg:        #eceae3;
-      --surface:   #f5f3ee;
-      --border:    #c8c4bb;
-      --text:      #1a1a18;
-      --muted:     #8a877f;
-      --accent:    #1a1a18;
-      --nav-bg:    rgba(236, 234, 227, 0.85);
-    }
-
-    html, body {
-      height: 100%;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Space Mono', monospace;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 32px;
-      background: var(--nav-bg);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .logo-box {
-      width: 56px;
-      height: 56px;
-      border: 1.5px solid var(--border);
-      background: var(--surface);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-      flex-shrink: 0;
-      transition: border-color 0.2s;
-    }
-    .logo-box:hover { border-color: var(--accent); }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      position: relative;
-      transition: color 0.2s;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0;
-      width: 0; height: 1px;
-      background: var(--accent);
-      transition: width 0.25s ease;
-    }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links a:hover::after { width: 100%; }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 100px 32px 60px;
-    }
-
-    /* ── SLIDESHOW ── */
-    .slideshow-wrapper {
-      position: relative;
-      width: min(620px, 90vw);
-      margin: 0 auto;
-    }
-
-    .slideshow {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      border: 1.5px solid var(--border);
-      background: var(--surface);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .slide {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transform: translateX(30px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-      pointer-events: none;
-    }
-
-    .slide.active {
-      opacity: 1;
-      transform: translateX(0);
-      pointer-events: auto;
-    }
-
-    /* Placeholder artwork panels */
-    .slide-inner {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .slide:nth-child(1) .slide-inner { background: #e8e5dc; }
-    .slide:nth-child(2) .slide-inner { background: #dfe0da; }
-    .slide:nth-child(3) .slide-inner { background: #e4dfd7; }
-
-    .slide-placeholder-icon {
-      width: 64px;
-      height: 64px;
-      border: 1.5px dashed var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .slide-placeholder-icon svg {
-      width: 28px; height: 28px;
-      stroke: var(--muted);
-      fill: none;
-      stroke-width: 1.2;
-    }
-
-    .slide-label {
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* ── DOTS ── */
-    .dots {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      border: 1.5px solid var(--muted);
-      background: transparent;
-      cursor: pointer;
-      transition: background 0.25s, border-color 0.25s, transform 0.2s;
-    }
-    .dot.active {
-      background: var(--accent);
-      border-color: var(--accent);
-    }
-    .dot:hover:not(.active) {
-      transform: scale(1.2);
-      border-color: var(--accent);
-    }
-
-    /* ── SLIDE ARROWS ── */
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .arrow:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-    }
-    .arrow:hover svg { stroke: var(--bg); }
-    .arrow svg {
-      width: 16px; height: 16px;
-      stroke: var(--text);
-      fill: none;
-      stroke-width: 1.8;
-      transition: stroke 0.2s;
-    }
-    .arrow-left  { left: -18px; }
-    .arrow-right { right: -18px; }
-
-    /* ── FADE IN ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .slideshow-wrapper {
-      animation: fadeUp 0.7s ease both;
-      animation-delay: 0.1s;
-      opacity: 0;
-    }
-    .dots { animation: fadeUp 0.7s ease both; animation-delay: 0.25s; opacity: 0; }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ══════════════════════════════════════
+       NAV
+  ══════════════════════════════════════ -->
   <nav>
     <div class="logo-box">LOGO</div>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+      <li><a href="#" class="nav-link"        data-page="portfolio">Portfolio</a></li>
+      <li><a href="#" class="nav-link"        data-page="about">About</a></li>
+      <li><a href="#" class="nav-link"        data-page="contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="slideshow-wrapper">
+  <!-- ══════════════════════════════════════
+       PAGE: HOME
+  ══════════════════════════════════════ -->
+  <section class="page" id="page-home">
+    <div class="hero">
+      <div class="slideshow-wrapper">
 
-      <!-- Left arrow -->
-      <button class="arrow arrow-left" aria-label="Previous" onclick="moveSlide(-1)">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
+        <button class="arrow arrow-left" id="arrow-left" aria-label="Previous">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
 
-      <!-- Slideshow -->
-      <div class="slideshow" id="slideshow">
-        <div class="slide active">
-          <div class="slide-inner">
-            <div class="slide-placeholder-icon">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9l4-4 4 4 4-6 4 6"/></svg>
+        <div class="slideshow" id="slideshow">
+          <div class="slide active">
+            <div class="slide-inner slide-1">
+              <div class="slide-placeholder-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9l4-4 4 4 4-6 4 6"/></svg>
+              </div>
+              <span class="slide-label">Artwork 01</span>
             </div>
-            <span class="slide-label">Artwork 01</span>
+          </div>
+          <div class="slide">
+            <div class="slide-inner slide-2">
+              <div class="slide-placeholder-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+              </div>
+              <span class="slide-label">Artwork 02</span>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide-inner slide-3">
+              <div class="slide-placeholder-icon">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+              </div>
+              <span class="slide-label">Artwork 03</span>
+            </div>
           </div>
         </div>
-        <div class="slide">
-          <div class="slide-inner">
-            <div class="slide-placeholder-icon">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+
+        <button class="arrow arrow-right" id="arrow-right" aria-label="Next">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <div class="dots" id="dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       PAGE: PORTFOLIO
+  ══════════════════════════════════════ -->
+  <section class="page hidden" id="page-portfolio">
+    <div class="page-content">
+
+      <!-- Grid -->
+      <div id="grid-view">
+        <p class="section-heading">All Projects &mdash; 6 works</p>
+        <div class="project-grid" id="project-grid"></div>
+      </div>
+
+      <!-- Detail -->
+      <div id="detail-view" class="hidden">
+        <button class="back-btn" id="back-btn">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          Back to all projects
+        </button>
+        <div class="detail-layout">
+          <div class="detail-image">
+            <div class="detail-image-inner">
+              <div class="detail-img-icon" id="detail-img-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9l4-4 4 4 4-6 4 6"/></svg>
+              </div>
+              <span class="slide-label" id="detail-img-num">Project Image</span>
             </div>
-            <span class="slide-label">Artwork 02</span>
           </div>
-        </div>
-        <div class="slide">
-          <div class="slide-inner">
-            <div class="slide-placeholder-icon">
-              <svg viewBox="0 0 24 24"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+          <div class="detail-info">
+            <h1 class="detail-title" id="detail-title">Title</h1>
+            <div class="detail-divider"></div>
+            <div>
+              <p class="detail-label">About this project</p>
+              <p class="detail-desc" id="detail-desc"></p>
             </div>
-            <span class="slide-label">Artwork 03</span>
+            <div class="detail-meta">
+              <div class="meta-row"><span class="meta-key">Year</span><span class="meta-val" id="meta-year"></span></div>
+              <div class="meta-row"><span class="meta-key">Category</span><span class="meta-val" id="meta-cat"></span></div>
+              <div class="meta-row"><span class="meta-key">Tools</span><span class="meta-val" id="meta-tools"></span></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Right arrow -->
-      <button class="arrow arrow-right" aria-label="Next" onclick="moveSlide(1)">
-        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-    </div>
-
-    <!-- Dots -->
-    <div class="dots" id="dots">
-      <div class="dot active" onclick="goToSlide(0)"></div>
-      <div class="dot" onclick="goToSlide(1)"></div>
-      <div class="dot" onclick="goToSlide(2)"></div>
     </div>
   </section>
 
+  <!-- ══════════════════════════════════════
+       PAGE: ABOUT
+  ══════════════════════════════════════ -->
+  <section class="page hidden" id="page-about">
+    <div class="page-content">
+      <p class="section-heading">About</p>
+      <div class="about-layout">
+        <div class="about-photo">
+          <div class="about-photo-inner">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span class="slide-label">Your Photo</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2 class="detail-title">Your Name</h2>
+          <div class="detail-divider"></div>
+          <p class="detail-label">Graphic Designer</p>
+          <p class="detail-desc">
+            Replace this with your bio. Tell visitors who you are, what drives your creative work, your background, and what kind of projects you love most. Keep it personal and authentic — this is your space.
+          </p>
+          <div class="detail-meta">
+            <div class="meta-row"><span class="meta-key">Based in</span><span class="meta-val">Your City</span></div>
+            <div class="meta-row"><span class="meta-key">Speciality</span><span class="meta-val">Brand Identity, Poster Design</span></div>
+            <div class="meta-row"><span class="meta-key">Available</span><span class="meta-val">For freelance work</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       PAGE: CONTACT
+  ══════════════════════════════════════ -->
+  <section class="page hidden" id="page-contact">
+    <div class="page-content">
+      <p class="section-heading">Contact</p>
+      <div class="contact-layout">
+        <div class="contact-info">
+          <h2 class="detail-title">Let's work<br/>together.</h2>
+          <div class="detail-divider"></div>
+          <p class="detail-desc">Have a project in mind? Feel free to reach out — I'm always open to new collaborations and creative opportunities.</p>
+          <div class="detail-meta">
+            <div class="meta-row"><span class="meta-key">Email</span><span class="meta-val">your@email.com</span></div>
+            <div class="meta-row"><span class="meta-key">Instagram</span><span class="meta-val">@yourhandle</span></div>
+            <div class="meta-row"><span class="meta-key">Behance</span><span class="meta-val">behance.net/yourname</span></div>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-input" id="name" type="text" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input" id="email" type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-input form-textarea" id="message" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button class="form-submit" type="submit">Send Message</button>
+          <p class="form-confirm hidden" id="form-confirm">✓ Message sent — I'll be in touch soon.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     &copy; 2026 &nbsp;·&nbsp; YOUR NAME &nbsp;·&nbsp; GRAPHIC DESIGN
   </footer>
 
-  <script>
-    let current = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots   = document.querySelectorAll('.dot');
-
-    function goToSlide(n) {
-      slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
-      current = (n + slides.length) % slides.length;
-      slides[current].classList.add('active');
-      dots[current].classList.add('active');
-    }
-
-    function moveSlide(dir) { goToSlide(current + dir); }
-
-    // Auto-advance every 4 s
-    setInterval(() => moveSlide(1), 4000);
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
