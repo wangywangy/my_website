@@ -30,10 +30,11 @@
       tools: 'Photoshop, InDesign',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/TypoTriBrochure.webp',
-        'assets/TypoTriBrochure2.webp',
-        'assets/TypoTriBrochure3.webp',
-        'assets/TypoTriBrochureGif.gif',
+        'assets/Booklet1.jpg',
+        'assets/Booklet2.jpg',
+        'assets/Booklet3.jpg',
+        'assets/Booklet4.jpg',
+        'assets/Booklet5.jpg',
       ]
     },
     {
@@ -44,9 +45,12 @@
       tools: 'Illustrator',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/BauhausMagazine.jpg',
-        'assets/BauhausMagazine2.jpg',
-        'assets/BauhausMagazine3.jpg',
+        'assets/VisionOs.jpg',
+        'assets/VisionOs2.jpg',
+        'assets/VisionOs3.jpg',
+        'assets/VisionOs4.jpg',
+        'assets/VisionOs5.jpg',
+        'assets/VisionOs6.jpg',
       ]
     },
     {
@@ -57,7 +61,10 @@
       tools: 'After Effects, AI',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-
+        'assets/TypoTriBrochure.webp',
+        'assets/TypoTriBrochure2.webp',
+        'assets/TypoTriBrochure3.webp',
+        'assets/TypoTriBrochureGif.gif',
       ]
     },
     {
@@ -67,7 +74,10 @@
       category: 'Packaging',
       tools: 'Illustrator, Cinema 4D',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
-      images: []
+      images: [
+        'assets/AIGABrochure1.jpg',
+        'assets/AIGABrochure2.jpg',
+      ]
     },
     {
       id: 6,
@@ -75,8 +85,46 @@
       year: '2022',
       category: 'Editorial Design',
       tools: 'InDesign, Photoshop',
+      desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you. Full 40 pages at https://online.fliphtml5.com/yxzep/rcyu/', 
+      images: [
+        'assets/MagazineMockup1.jpg',
+        'assets/MagazineMockup2.jpg',
+        'assets/Magazine1.jpg',
+      ]
+    },
+    {
+      id: 7,
+      title: 'Project Title Seven',
+      year: '2022',
+      category: 'Editorial Design',
+      tools: 'InDesign, Photoshop',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
-      images: []
+      images: [
+        'assets/BauhausMagazine.jpg',
+        'assets/BauhausMagazine2.jpg',
+        'assets/BauhausMagazine3.jpg',
+      ]
+    },
+    {
+      id: 8,
+      title: 'Project Title Eight',
+      year: '2022',
+      category: 'Editorial Design',
+      tools: 'InDesign, Photoshop',
+      desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
+      images: [
+        'assets/RingsPoster1.jpg',
+      ]
+    },
+    {
+      id: 9,
+      title: 'Project Title Nine',
+      year: '2022',
+      category: 'Editorial Design',
+      tools: 'InDesign, Photoshop',
+      desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
+      images: [
+      ]
     },
   ];
   
