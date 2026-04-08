@@ -64,6 +64,16 @@ nav {
   cursor: pointer;
   transition: border-color 0.2s;
 }
+
+.logo-img {
+  max-width: 98%;
+  max-height: 98%;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .logo-box:hover { border-color: var(--accent); }
 
 .nav-links {
@@ -133,7 +143,8 @@ nav {
 /* Slideshow wrapper */
 .slideshow-wrapper {
   position: relative;
-  width: min(620px, 90vw);
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
   animation: fadeUp 0.7s ease both;
   animation-delay: 0.1s;
@@ -163,16 +174,25 @@ nav {
 }
 
 .slide-inner {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
 }
+
 .slide-1 { background: #e8e5dc; }
 .slide-2 { background: #dfe0da; }
 .slide-3 { background: #e4dfd7; }
+
+/* Responsive slideshow images */
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: var(--surface);
+}
 
 .slide-placeholder-icon {
   width: 64px; height: 64px;
@@ -202,7 +222,7 @@ nav {
   transform: translateY(-50%);
   background: var(--surface);
   border: 1.5px solid var(--border);
-  width: 36px; height: 36px;
+  width: 36px; height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -219,8 +239,8 @@ nav {
   transition: stroke 0.2s;
 }
 .arrow:hover svg { stroke: var(--bg); }
-.arrow-left  { left: -18px; }
-.arrow-right { right: -18px; }
+.arrow-left  { left: -30px; }
+.arrow-right { right: -30px; }
 
 /* Dots */
 .dots {
@@ -371,15 +391,27 @@ nav {
   align-items: start;
 }
 
+/* ── Detail image: flexible height, fits any image size ── */
 .detail-image {
   width: 100%;
-  aspect-ratio: 4 / 3;
   border: 1.5px solid var(--border);
   background: var(--surface);
   overflow: hidden;
+  position: relative;
 }
+
+/* Main displayed image — natural size, no cropping */
+.detail-image > img,
+.detail-slide.active img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Placeholder (no image) */
 .detail-image-inner {
-  width: 100%; height: 100%;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -398,6 +430,58 @@ nav {
   stroke: var(--muted);
   fill: none;
   stroke-width: 1.2;
+}
+
+/* ── Detail image slideshow (multiple images) ── */
+.detail-slides {
+  position: relative;
+  width: 100%;
+}
+
+.detail-slide {
+  display: none;
+}
+.detail-slide.active {
+  display: block;
+  animation: fadeUp 0.35s ease both;
+}
+
+.detail-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Thumbnail strip */
+.detail-thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.detail-thumb {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+.detail-thumb.active,
+.detail-thumb:hover {
+  opacity: 1;
+  border-color: var(--accent);
+}
+
+/* Image counter label */
+.detail-img-counter {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 8px;
 }
 
 .detail-info { display: flex; flex-direction: column; gap: 20px; }
@@ -546,4 +630,73 @@ footer {
   letter-spacing: 0.1em;
   color: var(--muted);
   border-top: 1px solid var(--border);
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .project-grid,
+  .detail-layout,
+  .about-layout,
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .page-content {
+    padding: 110px 24px 50px;
+  }
+
+  .hero {
+    padding: 100px 20px 50px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .arrow-left {
+    left: 8px;
+  }
+
+  .arrow-right {
+    right: 8px;
+  }
+}
+
+@media (max-width: 640px) {
+  nav {
+    padding: 16px 18px;
+  }
+
+  .logo-box {
+    width: 46px;
+    height: 46px;
+    font-size: 9px;
+  }
+
+  .nav-links a {
+    font-size: 10px;
+  }
+
+  .nav-links {
+    gap: 14px;
+  }
+
+  .detail-title {
+    font-size: 18px;
+  }
+
+  .page-content {
+    padding: 100px 18px 40px;
+  }
+
+  .hero {
+    padding: 92px 14px 40px;
+  }
+
+  .arrow {
+    width: 32px;
+    height: 32px;
+  }
 }
