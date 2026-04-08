@@ -17,9 +17,9 @@
       tools: 'Illustrator, Photoshop',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/DataGenImg2.png',
-        'assets/DataGenImg.png',
-        'assets/DataGenImg3.png',
+        'assets/DataGenImg2.webp',
+        'assets/DataGenImg.webp',
+        'assets/DataGenImg3.webp',
       ]
     },
     {
@@ -30,9 +30,9 @@
       tools: 'Photoshop, InDesign',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/TypoTriBrochure.png',
-        'assets/TypoTriBrochure2.png',
-        'assets/TypoTriBrochure3.png',
+        'assets/TypoTriBrochure.webp',
+        'assets/TypoTriBrochure2.webp',
+        'assets/TypoTriBrochure3.webp',
         'assets/TypoTriBrochureGif.gif',
       ]
     },
@@ -57,7 +57,7 @@
       tools: 'After Effects, AI',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        
+
       ]
     },
     {
