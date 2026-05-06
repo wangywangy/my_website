@@ -45,12 +45,9 @@
       tools: 'Illustrator',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/VisionOs.jpg',
-        'assets/VisionOs2.jpg',
-        'assets/VisionOs3.jpg',
-        'assets/VisionOs4.jpg',
-        'assets/VisionOs5.jpg',
-        'assets/VisionOs6.jpg',
+        'assets/MagazineMockup1.jpg',
+        'assets/MagazineMockup2.jpg',
+        'assets/Magazine1.jpg',
       ]
     },
     {
@@ -61,10 +58,9 @@
       tools: 'After Effects, AI',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/TypoTriBrochure.webp',
-        'assets/TypoTriBrochure2.webp',
-        'assets/TypoTriBrochure3.webp',
-        'assets/TypoTriBrochureGif.gif',
+        'assets/BauhausMagazine.jpg',
+        'assets/BauhausMagazine2.jpg',
+        'assets/BauhausMagazine3.jpg',
       ]
     },
     {
@@ -75,8 +71,11 @@
       tools: 'Illustrator, Cinema 4D',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/AIGABrochure1.jpg',
-        'assets/AIGABrochure2.jpg',
+        'assets/RingsPoster1.jpg',
+        'assets/RingsPoster2.jpg',
+        'assets/OlympicMockups1.jpg',
+        'assets/OlympicMockups2.jpg',
+        'assets/OlympicMockups3.jpg',
       ]
     },
     {
@@ -87,9 +86,11 @@
       tools: 'InDesign, Photoshop',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you. Full 40 pages at https://online.fliphtml5.com/yxzep/rcyu/', 
       images: [
-        'assets/MagazineMockup1.jpg',
-        'assets/MagazineMockup2.jpg',
-        'assets/Magazine1.jpg',
+        'assets/CoffeeProduct.jpg',
+        'assets/CoffeeProduct2.jpg',
+        'assets/CoffeeProduct3.jpg',
+        'assets/CoffeeProduct4.jpg',
+        'assets/CoffeeProduct5.jpg',
       ]
     },
     {
@@ -100,9 +101,10 @@
       tools: 'InDesign, Photoshop',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/BauhausMagazine.jpg',
-        'assets/BauhausMagazine2.jpg',
-        'assets/BauhausMagazine3.jpg',
+        'assets/TypoTriBrochure.webp',
+        'assets/TypoTriBrochure2.webp',
+        'assets/TypoTriBrochure3.webp',
+        'assets/TypoTriBrochureGif.gif',
       ]
     },
     {
@@ -113,7 +115,8 @@
       tools: 'InDesign, Photoshop',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/RingsPoster1.jpg',
+        'assets/AIGABrochure1.jpg',
+        'assets/AIGABrochure2.jpg',
       ]
     },
     {
@@ -124,6 +127,12 @@
       tools: 'InDesign, Photoshop',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
+        'assets/VisionOs.jpg',
+        'assets/VisionOs2.jpg',
+        'assets/VisionOs3.jpg',
+        'assets/VisionOs4.jpg',
+        'assets/VisionOs5.jpg',
+        'assets/VisionOs6.jpg',
       ]
     },
   ];
