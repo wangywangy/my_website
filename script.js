@@ -55,11 +55,12 @@
     },
     {
       id: 4,
-      title: 'Project Title Four',
-      year: '2023',
-      category: 'Motion Graphics',
-      tools: 'After Effects, AI',
-      desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
+      title: 'A Full 40 Page Magazine',
+      year: '2025',
+      category: 'Layout Design, Cover Design, Editorial Design',
+      tools: 'Camera, Photoshop, InDesign, Illustrator',
+      desc: 'This is a full 40-page magazine created as a personal project to explore layout design, cover design, and editorial design. The magazine features a mix of photography, typography, and graphic elements to create a visually engaging publication. Each page was carefully crafted to maintain a cohesive aesthetic while allowing for creative expression and experimentation with different design techniques. The project was an opportunity to push the boundaries of traditional magazine design and create something that is both visually striking and conceptually interesting.',
+      link: { label: 'View Full Pages', url: 'https://online.fliphtml5.com/yxzep/rcyu/' },
       images: [
         'assets/MagazineMockup1.jpg',
         'assets/MagazineMockup2.jpg',
@@ -283,6 +284,15 @@
     document.getElementById('meta-year').textContent = project.year;
     document.getElementById('meta-cat').textContent = project.category;
     document.getElementById('meta-tools').textContent = project.tools;
+
+    const linkEl = document.getElementById('detail-link');
+    if (project.link) {
+      linkEl.textContent = project.link.label;
+      linkEl.href = project.link.url;
+      linkEl.classList.remove('hidden');
+    } else {
+      linkEl.classList.add('hidden');
+    }
   
     /* Fill in image area — scoped to #detail-view to avoid grabbing wrong element */
     const imageBox = document.querySelector('#detail-view .detail-image');
