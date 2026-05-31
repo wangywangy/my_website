@@ -153,23 +153,22 @@
           <div class="detail-divider"></div>
           <p class="detail-desc">Have a project in mind? Feel free to reach out — I'm always open to new collaborations and creative opportunities.</p>
           <div class="detail-meta">
-            <div class="meta-row"><span class="meta-key">Email</span><span class="meta-val">your@email.com</span></div>
-            <div class="meta-row"><span class="meta-key">Instagram</span><span class="meta-val">@yourhandle</span></div>
-            <div class="meta-row"><span class="meta-key">Behance</span><span class="meta-val">behance.net/yourname</span></div>
+            <div class="meta-row"><span class="meta-key">Email</span><span class="meta-val">bnwang132@gmail.com</span></div>
           </div>
         </div>
-        <form class="contact-form" id="contact-form">
+        <form class="contact-form" id="contact-form" name="contact" netlify>
+          <input type="hidden" name="form-name" value="contact" />
           <div class="form-group">
             <label class="form-label" for="name">Name</label>
-            <input class="form-input" id="name" type="text" placeholder="Your name" />
+            <input class="form-input" id="name" name="name" type="text" placeholder="Your name" />
           </div>
           <div class="form-group">
             <label class="form-label" for="email">Email</label>
-            <input class="form-input" id="email" type="email" placeholder="your@email.com" />
+            <input class="form-input" id="email" name="email" type="email" placeholder="your@email.com" />
           </div>
           <div class="form-group">
-            <label class="form-label" for="message">Message</label>
-            <textarea class="form-input form-textarea" id="message" placeholder="Tell me about your project..."></textarea>
+            <label class="meta-key" for="message">Message</label>
+            <textarea class="form-input form-textarea" id="message" name="message" placeholder="Tell me about your project..."></textarea>
           </div>
           <button class="form-submit" type="submit">Send Message</button>
           <p class="form-confirm hidden" id="form-confirm">✓ Message sent — I'll be in touch soon.</p>

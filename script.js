@@ -368,8 +368,17 @@
      ══════════════════════════════════════════ */
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    const confirm = document.getElementById('form-confirm');
-    confirm.classList.remove('hidden');
-    this.reset();
-    setTimeout(() => confirm.classList.add('hidden'), 4000);
+    const form = this;
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString(),
+    })
+      .then(() => {
+        const confirm = document.getElementById('form-confirm');
+        confirm.classList.remove('hidden');
+        form.reset();
+        setTimeout(() => confirm.classList.add('hidden'), 4000);
+      })
+      .catch(() => alert('Something went wrong. Please try again.'));
   });
