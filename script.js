@@ -30,11 +30,12 @@
       tools: 'Photoshop, InDesign',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/Booklet1.jpg',
-        'assets/Booklet2.jpg',
-        'assets/Booklet3.jpg',
-        'assets/Booklet4.jpg',
-        'assets/Booklet5.jpg',
+        'assets/FullertonRecords.webp',
+        'assets/FullertonRecords2.jpg',
+        'assets/FullertonRecords3.jpg',
+        'assets/FullertonRecords4.webp',
+        'assets/FullertonRecords5.jpg',
+        'assets/FullertonRecords6.webp',
       ]
     },
     {
@@ -45,9 +46,11 @@
       tools: 'Illustrator',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/MagazineMockup1.jpg',
-        'assets/MagazineMockup2.jpg',
-        'assets/Magazine1.jpg',
+        'assets/Booklet1.jpg',
+        'assets/Booklet2.jpg',
+        'assets/Booklet3.jpg',
+        'assets/Booklet4.jpg',
+        'assets/Booklet5.jpg',
       ]
     },
     {
@@ -58,9 +61,9 @@
       tools: 'After Effects, AI',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/BauhausMagazine.jpg',
-        'assets/BauhausMagazine2.jpg',
-        'assets/BauhausMagazine3.jpg',
+        'assets/MagazineMockup1.jpg',
+        'assets/MagazineMockup2.jpg',
+        'assets/Magazine1.jpg',
       ]
     },
     {
@@ -71,11 +74,9 @@
       tools: 'Illustrator, Cinema 4D',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
       images: [
-        'assets/RingsPoster1.jpg',
-        'assets/RingsPoster2.jpg',
-        'assets/OlympicMockups1.jpg',
-        'assets/OlympicMockups2.jpg',
-        'assets/OlympicMockups3.jpg',
+        'assets/BauhausMagazine.jpg',
+        'assets/BauhausMagazine2.jpg',
+        'assets/BauhausMagazine3.jpg',
       ]
     },
     {
@@ -86,16 +87,31 @@
       tools: 'InDesign, Photoshop',
       desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you. Full 40 pages at https://online.fliphtml5.com/yxzep/rcyu/', 
       images: [
-        'assets/CoffeeProduct.jpg',
-        'assets/CoffeeProduct2.jpg',
-        'assets/CoffeeProduct3.jpg',
-        'assets/CoffeeProduct4.jpg',
-        'assets/CoffeeProduct5.jpg',
+        'assets/RingsPoster1.jpg',
+        'assets/RingsPoster2.jpg',
+        'assets/OlympicMockups1.jpg',
+        'assets/OlympicMockups2.jpg',
+        'assets/OlympicMockups3.jpg',
       ]
     },
     {
       id: 7,
       title: 'Project Title Seven',
+      year: '2022',
+      category: 'Editorial Design',
+      tools: 'InDesign, Photoshop',
+      desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
+      images: [
+        'assets/CoffeeProduct.jpg',
+        'assets/CoffeeProduct2.webp',
+        'assets/CoffeeProduct3.jpg',
+        'assets/CoffeeProduct4.webp',
+        'assets/CoffeeProduct5.jpg',
+      ]
+    },
+    {
+      id: 8,
+      title: 'Project Title Eight',
       year: '2022',
       category: 'Editorial Design',
       tools: 'InDesign, Photoshop',
@@ -108,8 +124,8 @@
       ]
     },
     {
-      id: 8,
-      title: 'Project Title Eight',
+      id: 9,
+      title: 'Project Title Nine',
       year: '2022',
       category: 'Editorial Design',
       tools: 'InDesign, Photoshop',
@@ -120,8 +136,8 @@
       ]
     },
     {
-      id: 9,
-      title: 'Project Title Nine',
+      id: 10,
+      title: 'Project Title Ten',
       year: '2022',
       category: 'Editorial Design',
       tools: 'InDesign, Photoshop',
