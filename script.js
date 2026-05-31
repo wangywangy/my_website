@@ -11,11 +11,11 @@
    const projects = [
     {
       id: 1,
-      title: 'Project Title One',
+      title: 'Data Chart Posters',
       year: '2025',
-      category: 'Brand Identity',
-      tools: 'Illustrator, Photoshop',
-      desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
+      category: 'Poster Design',
+      tools: 'Illustrator, Indesign, Processing, AI',
+      desc: 'This project began as an experiment in data visualization, using gameplay statistics to communicate a player\'s influence within a match. Rather than presenting the data through a traditional chart, I translated KDA (Kills, Deaths, and Assists) values into a generative visual system.\n\nThe first stage involved creating a custom generator in Processing. Users can input KDA statistics, and the program produces a unique composition of randomly placed cats across the canvas. Different visual attributes correspond to specific gameplay metrics, allowing the data to be represented in a more engaging and playful format.\n\nOnce the generator was completed, I imported the output into InDesign to design the final composition and accompanying typography. The project was then finalized in Illustrator, where I refined the layout and added finishing touches to create the completed piece.',
       images: [
         'assets/DataGenImg2.webp',
         'assets/DataGenImg.webp',
@@ -24,11 +24,11 @@
     },
     {
       id: 2,
-      title: 'Project Title Two',
-      year: '2024',
-      category: 'Poster Design',
-      tools: 'Photoshop, InDesign',
-      desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
+      title: 'Fullerton Records',
+      year: '2026',
+      category: 'Record Cover',
+      tools: 'Photoshop, InDesign, Illustrator, Processing, AI',
+      desc: 'This project was a personal exploration into the world of record cover design, inspired by the rich history of vinyl and the unique visual language that accompanies it. The concept was to create a series of record covers for a fictional label called "Fullerton Records."\n\nThe process began with extensive research into iconic record covers, analyzing their composition, typography, and use of imagery. I then developed a set of design principles that would guide the creation of the Fullerton Records series, focusing on bold visuals, dynamic layouts, and a cohesive color palette.\n\nUsing a combination of Photoshop, InDesign, Illustrator, Processing, and AI tools, I created a diverse range of covers that each tell their own story while maintaining a consistent aesthetic. The project allowed me to experiment with different styles and techniques, ultimately resulting in a visually striking collection that pays homage to the art of record cover design.',
       images: [
         'assets/FullertonRecords.webp',
         'assets/FullertonRecords2.jpg',
@@ -40,11 +40,11 @@
     },
     {
       id: 3,
-      title: 'Project Title Three',
+      title: '3 Week Self-Study Booklet',
       year: '2024',
       category: 'Typography',
-      tools: 'Illustrator',
-      desc: 'Replace this with your project description. Explain the concept, the tools used, the client brief, and what makes this piece special to you.',
+      tools: 'Illustrator, Processing, AI',
+      desc: 'This project is a self-study booklet created to look over the past three weeks of typography exercises. It includes a variety of type specimens, experimental layouts, and generative type explorations. The booklet was designed to be both a reflection of the learning process and a showcase of the different techniques and styles I experimented with during this period.',
       images: [
         'assets/Booklet1.jpg',
         'assets/Booklet2.jpg',
@@ -205,6 +205,7 @@
     link.addEventListener('click', e => {
       e.preventDefault();
       showPage(link.dataset.page);
+      if (link.dataset.page === 'portfolio') closeDetail();
     });
   });
   
@@ -263,7 +264,11 @@
   /* ══════════════════════════════════════════
      PORTFOLIO DETAIL VIEW
      ══════════════════════════════════════════ */
+  let detailAutoTimer = null;
+
   function openDetail(project, i) {
+    clearInterval(detailAutoTimer);
+    detailAutoTimer = null;
     document.getElementById('grid-view').classList.add('hidden');
   
     const detail = document.getElementById('detail-view');
@@ -331,17 +336,15 @@
           goToDetailSlide(parseInt(thumb.dataset.index)));
       });
   
-      const autoTimer = setInterval(() => goToDetailSlide(detailCurrent + 1), 10000);
-  
-      document.getElementById('back-btn').addEventListener('click', () => {
-        clearInterval(autoTimer);
-      }, { once: true });
+      detailAutoTimer = setInterval(() => goToDetailSlide(detailCurrent + 1), 10000);
     }
   
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   
   function closeDetail() {
+    clearInterval(detailAutoTimer);
+    detailAutoTimer = null;
     document.getElementById('detail-view').classList.add('hidden');
     document.getElementById('grid-view').classList.remove('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -400,12 +400,16 @@ nav {
   position: relative;
 }
 
-/* Main displayed image — natural size, no cropping */
+/* Main displayed image — fits viewport height, no cropping */
 .detail-image > img,
 .detail-slide.active img {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  max-height: 75vh;
   height: auto;
   display: block;
+  margin: 0 auto;
+  object-fit: contain;
 }
 
 /* Placeholder (no image) */
@@ -511,6 +515,7 @@ nav {
   line-height: 1.85;
   color: var(--muted);
   letter-spacing: 0.02em;
+  white-space: pre-wrap;
 }
 
 .detail-meta {
