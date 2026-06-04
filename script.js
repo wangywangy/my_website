@@ -382,3 +382,94 @@
       })
       .catch(() => alert('Something went wrong. Please try again.'));
   });
+
+
+  /* ══════════════════════════════════════════
+     FLOW FIELD  (Home page background)
+     ══════════════════════════════════════════ */
+  (function () {
+    const canvas = document.getElementById('flow-canvas');
+    const ctx = canvas.getContext('2d');
+
+    const BG        = '#eceae3';
+    const COUNT     = 200;
+    const SPEED     = 1.4;
+    const MAX_AGE   = 280;
+
+    let W, H, particles, rafId;
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+      /* Fill solid so trails are visible from frame 1 */
+      ctx.fillStyle = BG;
+      ctx.fillRect(0, 0, W, H);
+      spawnAll();
+    }
+
+    function spawnAll() {
+      particles = Array.from({ length: COUNT }, () => spawn(true));
+    }
+
+    function spawn(randomAge) {
+      return {
+        x:   Math.random() * W,
+        y:   Math.random() * H,
+        age: randomAge ? Math.floor(Math.random() * MAX_AGE) : 0,
+      };
+    }
+
+    function angle(x, y, t) {
+      const nx = x / W;
+      const ny = y / H;
+      return (
+        Math.sin(nx * 3.5 + t * 0.4) * Math.cos(ny * 2.5 - t * 0.25) * Math.PI +
+        Math.sin(nx * 1.8 - ny * 1.8 + t * 0.18) * Math.PI * 0.6
+      );
+    }
+
+    function loop(ms) {
+      const t = ms * 0.001;
+
+      /* Soft fade to background — creates trailing effect */
+      ctx.fillStyle = 'rgba(236,234,227,0.06)';
+      ctx.fillRect(0, 0, W, H);
+
+      for (const p of particles) {
+        const a = angle(p.x, p.y, t);
+        const px = p.x, py = p.y;
+        p.x += Math.cos(a) * SPEED;
+        p.y += Math.sin(a) * SPEED;
+        p.age++;
+
+        const alpha = Math.sin((p.age / MAX_AGE) * Math.PI) * 0.55;
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(p.x, p.y);
+        ctx.strokeStyle = `rgba(26,26,24,${alpha.toFixed(3)})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        if (p.x < 0 || p.x > W || p.y < 0 || p.y > H || p.age >= MAX_AGE) {
+          Object.assign(p, spawn(false));
+        }
+      }
+
+      rafId = requestAnimationFrame(loop);
+    }
+
+    /* Pause when navigating away from home */
+    const homePage = document.getElementById('page-home');
+    new MutationObserver(() => {
+      if (homePage.classList.contains('hidden')) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      } else if (!rafId) {
+        rafId = requestAnimationFrame(loop);
+      }
+    }).observe(homePage, { attributes: true, attributeFilter: ['class'] });
+
+    window.addEventListener('resize', resize);
+    resize();
+    rafId = requestAnimationFrame(loop);
+  }());

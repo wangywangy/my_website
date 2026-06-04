@@ -131,6 +131,24 @@ nav {
 /* ══════════════════════════════════════════
    HOME  —  HERO / SLIDESHOW
    ══════════════════════════════════════════ */
+#flow-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#page-home {
+  position: relative;
+}
+
+#page-home .hero {
+  position: relative;
+  z-index: 1;
+}
+
 .hero {
   flex: 1;
   display: flex;
