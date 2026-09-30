@@ -1,13 +1,3 @@
-/* ══════════════════════════════════════════
-   script.js  —  Graphic Design Portfolio
-   ══════════════════════════════════════════ */
-
-/* ──────────────────────────────────────────
-   PROJECT DATA
-   - Add your image path to each project.
-   - If a project has no image yet, leave
-     image: '' and a placeholder shows instead.
-   ────────────────────────────────────────── */
    const projects = [
     {
       id: 1,
@@ -178,9 +168,8 @@
   }
   
   
-  /* ══════════════════════════════════════════
-     PAGE NAVIGATION
-     ══════════════════════════════════════════ */
+  /* ═══════════════════════════════════════   PAGE NAVIGATION   ═══════════════════════════════════════ */
+     
   const pages = document.querySelectorAll('.page');
   const navLinks = document.querySelectorAll('.nav-link');
   
@@ -214,38 +203,43 @@
   document.querySelector('.logo-box').addEventListener('click', () => showPage('home'));
   
   
-  /* ══════════════════════════════════════════
-     SLIDESHOW  (Home page)
-     ══════════════════════════════════════════ */
+  /* ═══════════════════════════════════════   SLIDESHOW  (Home page)   ═══════════════════════════════════════ */
+     
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-  
+  const radioBtns = document.querySelectorAll('.radio-btn');
+  const titlePill = document.getElementById('project-title-pill');
+  const numberBadges = document.querySelectorAll('.project-number-badge');
+
+  function updateSlideMeta() {
+    const active = slides[currentSlide];
+    titlePill.textContent = active.dataset.title;
+    numberBadges.forEach(badge => badge.textContent = active.dataset.num);
+  }
+
   function goToSlide(n) {
     slides[currentSlide].classList.remove('active');
-    dots[currentSlide].classList.remove('active');
+    radioBtns[currentSlide].classList.remove('active');
     currentSlide = (n + slides.length) % slides.length;
     slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
+    radioBtns[currentSlide].classList.add('active');
+    updateSlideMeta();
   }
-  
+
   function moveSlide(dir) {
     goToSlide(currentSlide + dir);
   }
-  
-  document.getElementById('arrow-left').addEventListener('click', () => moveSlide(-1));
-  document.getElementById('arrow-right').addEventListener('click', () => moveSlide(1));
-  
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => goToSlide(i));
+
+  radioBtns.forEach((btn, i) => {
+    btn.addEventListener('click', () => goToSlide(i));
   });
-  
+
+  updateSlideMeta();
   setInterval(() => moveSlide(1), 4000);
   
   
-  /* ══════════════════════════════════════════
-     PORTFOLIO GRID
-     ══════════════════════════════════════════ */
+  /* ═══════════════════════════════════════   PORTFOLIO GRID   ═══════════════════════════════════════ */
+     
   const grid = document.getElementById('project-grid');
   
   projects.forEach((project, i) => {
@@ -262,9 +256,8 @@
   });
   
   
-  /* ══════════════════════════════════════════
-     PORTFOLIO DETAIL VIEW
-     ══════════════════════════════════════════ */
+  /* ═══════════════════════════════════════   PORTFOLIO DETAIL VIEW   ═══════════════════════════════════════ */
+     
   let detailAutoTimer = null;
 
   function openDetail(project, i) {
@@ -363,9 +356,9 @@
   document.getElementById('back-btn').addEventListener('click', closeDetail);
   
   
-  /* ══════════════════════════════════════════
-     CONTACT FORM
-     ══════════════════════════════════════════ */
+  /* ═══════════════════════════════════════   CONTACT FORM   ═══════════════════════════════════════ */
+     
+     
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const form = this;
@@ -384,9 +377,9 @@
   });
 
 
-  /* ══════════════════════════════════════════
-     FLOW FIELD  (Home page background)
-     ══════════════════════════════════════════ */
+  /* ═══════════════════════════════════════   FLOW FIELD  (Home page background)   ═══════════════════════════════════════ */
+     
+     
   (function () {
     const canvas = document.getElementById('flow-canvas');
     const ctx = canvas.getContext('2d');

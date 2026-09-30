@@ -1,7 +1,3 @@
-/* ══════════════════════════════════════════
-   style.css  —  Graphic Design Portfolio
-   ══════════════════════════════════════════ */
-
 /* ── RESET ── */
 *, *::before, *::after {
   margin: 0;
@@ -146,7 +142,7 @@ nav {
 
 #page-home .hero {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero {
@@ -158,14 +154,171 @@ nav {
   padding: 100px 32px 60px;
 }
 
+/* ── Hero frame: the gutter around the box hosts every decoration, right up against it ── */
+.hero-frame {
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  padding: 64px 110px 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Crop marks — sit at the frame's own edge, so the title (inset by the frame's
+   padding) reads lower than them, and the box's edge sits above the bottom pair */
+.corner-mark {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  pointer-events: none;
+}
+.corner-mark.tl { top: 0;    left: 15%;  border-top: 2px solid var(--border); border-left: 2px solid var(--border); }
+.corner-mark.tr { top: 0;    right: 15%; border-top: 2px solid var(--border); border-right: 2px solid var(--border); }
+.corner-mark.bl { bottom: 0; left: 15%;  border-bottom: 2px solid var(--border); border-left: 2px solid var(--border); }
+.corner-mark.br { bottom: 0; right: 15%; border-bottom: 2px solid var(--border); border-right: 2px solid var(--border); }
+
+/* Scattered accents — dots / rings / plus signs, tucked into the frame's corners
+   right next to the title/box rather than out at the browser edge */
+.deco-dot {
+  position: absolute;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--text);
+  opacity: 0.6;
+}
+.deco-ring {
+  position: absolute;
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  border: 1.5px solid var(--muted);
+  opacity: 0.6;
+}
+.deco-plus {
+  position: absolute;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--muted);
+  opacity: 0.6;
+  font-weight: 400;
+}
+
+.deco-tl-1 { top: 14px; left: 14px; }
+.deco-tl-2 { top: 32px; left: 54px; }
+
+.deco-tr-1 { top: 14px; right: 14px; }
+.deco-tr-2 { top: 36px; right: 18px; }
+
+.deco-bl-1 { bottom: 58px; left: 14px; }
+.deco-bl-2 { bottom: 32px; left: 14px; }
+.deco-bl-3 { bottom: 46px; left: 54px; }
+.deco-bl-4 { bottom: 16px; left: 46px; }
+
+.deco-br-1 { bottom: 58px; right: 14px; }
+.deco-br-2 { bottom: 32px; right: 14px; }
+.deco-br-3 { bottom: 46px; right: 54px; }
+.deco-br-4 { bottom: 16px; right: 46px; }
+
+/* Title pill */
+.project-title-pill {
+  width: fit-content;
+  max-width: 90%;
+  margin: 0 auto 24px;
+  padding: 12px 32px;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Slideshow wrapper */
 .slideshow-wrapper {
   position: relative;
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
   animation: fadeUp 0.7s ease both;
   animation-delay: 0.1s;
+}
+
+/* Project number column — three plain numerals flanking the box on the left */
+.project-number-col {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -76px;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+}
+.project-number-badge {
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.project-number-badge.deco {
+  opacity: 0.55;
+}
+
+/* Radio nav — vertical project selector flanking the box on the right */
+.radio-nav {
+  position: absolute;
+  right: -64px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  z-index: 5;
+}
+.radio-btn {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid var(--muted);
+  background: var(--surface);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+}
+.radio-btn.active {
+  border-color: var(--accent);
+  background: radial-gradient(circle, var(--accent) 42%, var(--surface) 44%);
+}
+.radio-btn:hover:not(.active) {
+  transform: scale(1.2);
+  border-color: var(--accent);
+}
+
+/* Below this width there isn't room for the side columns / outer flourishes */
+@media (max-width: 1300px) {
+  .corner-mark,
+  .deco-dot,
+  .deco-ring,
+  .deco-plus,
+  .project-number-badge.deco {
+    display: none;
+  }
+  .hero-frame {
+    padding: 0 32px;
+  }
+  .project-number-col {
+    left: 16px;
+    justify-content: center;
+  }
+  .radio-nav {
+    right: 16px;
+  }
 }
 
 .slideshow {
@@ -231,59 +384,6 @@ nav {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--muted);
-}
-
-/* Arrows */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  width: 36px; height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: background 0.2s, border-color 0.2s;
-}
-.arrow:hover { background: var(--accent); border-color: var(--accent); }
-.arrow svg {
-  width: 16px; height: 16px;
-  stroke: var(--text);
-  fill: none;
-  stroke-width: 1.8;
-  transition: stroke 0.2s;
-}
-.arrow:hover svg { stroke: var(--bg); }
-.arrow-left  { left: -30px; }
-.arrow-right { right: -30px; }
-
-/* Dots */
-.dots {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 24px;
-  animation: fadeUp 0.7s ease both;
-  animation-delay: 0.25s;
-}
-.dot {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  border: 1.5px solid var(--muted);
-  background: transparent;
-  cursor: pointer;
-  transition: background 0.25s, border-color 0.25s, transform 0.2s;
-}
-.dot.active {
-  background: var(--accent);
-  border-color: var(--accent);
-}
-.dot:hover:not(.active) {
-  transform: scale(1.2);
-  border-color: var(--accent);
 }
 
 /* ══════════════════════════════════════════
@@ -688,14 +788,6 @@ footer {
   .nav-links {
     gap: 20px;
   }
-
-  .arrow-left {
-    left: 8px;
-  }
-
-  .arrow-right {
-    right: 8px;
-  }
 }
 
 @media (max-width: 640px) {
@@ -727,10 +819,5 @@ footer {
 
   .hero {
     padding: 92px 14px 40px;
-  }
-
-  .arrow {
-    width: 32px;
-    height: 32px;
   }
 }

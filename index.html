@@ -11,9 +11,8 @@
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════
-       NAV
-  ══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════   NAV   ═══════════════════════════════════ -->
+
   <nav>
     <div class="logo-box">
       <img src="assets/Logo.jpg" alt="Logo" class="logo-img">
@@ -26,54 +25,78 @@
     </ul>
   </nav>
 
-  <!-- ══════════════════════════════════════
-       PAGE: HOME
-  ══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════   PAGE: HOME   ═══════════════════════════════════ -->
+       
   <section class="page" id="page-home">
     <canvas id="flow-canvas"></canvas>
+
     <div class="hero">
-      <div class="slideshow-wrapper">
+      <div class="hero-frame">
 
-        <button class="arrow arrow-left" id="arrow-left" aria-label="Previous">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
+        <span class="corner-mark tl"></span>
+        <span class="corner-mark tr"></span>
+        <span class="corner-mark bl"></span>
+        <span class="corner-mark br"></span>
 
-        <div class="slideshow" id="slideshow">
-          <div class="slide active">
-            <div class="slide-inner">
-              <img src="assets/DataGenImg2.webp" alt="Artwork 01">
+        <span class="deco-dot deco-tl-1"></span>
+        <span class="deco-plus deco-tl-2">+</span>
+
+        <span class="deco-dot deco-tr-1"></span>
+        <span class="deco-ring deco-tr-2"></span>
+
+        <span class="deco-dot deco-bl-1"></span>
+        <span class="deco-dot deco-bl-2"></span>
+        <span class="deco-plus deco-bl-3">+</span>
+        <span class="deco-ring deco-bl-4"></span>
+
+        <span class="deco-dot deco-br-1"></span>
+        <span class="deco-dot deco-br-2"></span>
+        <span class="deco-plus deco-br-3">+</span>
+        <span class="deco-ring deco-br-4"></span>
+
+        <div class="project-title-pill" id="project-title-pill">Data Chart Posters</div>
+
+        <div class="slideshow-wrapper">
+
+          <div class="project-number-col">
+            <span class="project-number-badge deco" aria-hidden="true">01</span>
+            <span class="project-number-badge live" id="project-number">01</span>
+            <span class="project-number-badge deco" aria-hidden="true">01</span>
+          </div>
+
+          <div class="slideshow" id="slideshow">
+            <div class="slide active" data-title="Data Chart Posters" data-num="01">
+              <div class="slide-inner">
+                <img src="assets/DataGenImg2.webp" alt="Artwork 01">
+              </div>
+            </div>
+
+            <div class="slide" data-title="Typography Brochure" data-num="02">
+              <div class="slide-inner">
+                <img src="assets/TypoTriBrochure3.webp" alt="Artwork 02">
+              </div>
+            </div>
+
+            <div class="slide" data-title="A Full 40 Page Magazine" data-num="03">
+              <div class="slide-inner">
+                <img src="assets/MagazineMockup1.jpg" alt="Artwork 03">
+              </div>
             </div>
           </div>
 
-          <div class="slide">
-            <div class="slide-inner">
-              <img src="assets/TypoTriBrochure3.webp" alt="Artwork 02">
-            </div>
+          <div class="radio-nav" id="radio-nav">
+            <button class="radio-btn active" aria-label="Go to slide 1"></button>
+            <button class="radio-btn" aria-label="Go to slide 2"></button>
+            <button class="radio-btn" aria-label="Go to slide 3"></button>
           </div>
 
-          <div class="slide">
-            <div class="slide-inner">
-              <img src="assets/MagazineMockup1.jpg" alt="Artwork 03">
-            </div>
-          </div>
         </div>
-
-        <button class="arrow arrow-right" id="arrow-right" aria-label="Next">
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-
-      <div class="dots" id="dots">
-        <div class="dot active"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════
-       PAGE: PORTFOLIO
-  ══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════   PAGE: PORTFOLIO   ═══════════════════════════════════ -->
+       
   <section class="page hidden" id="page-portfolio">
     <div class="page-content">
 
@@ -118,9 +141,8 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════
-       PAGE: ABOUT
-  ══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════   PAGE: ABOUT   ═══════════════════════════════════ -->
+       
   <section class="page hidden" id="page-about">
     <div class="page-content">
       <p class="section-heading">About</p>
@@ -142,9 +164,8 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════
-       PAGE: CONTACT
-  ══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════  PAGE: CONTACT   ═══════════════════════════════════ -->
+       
   <section class="page hidden" id="page-contact">
     <div class="page-content">
       <p class="section-heading">Contact</p>
