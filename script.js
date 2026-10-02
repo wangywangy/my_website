@@ -45,7 +45,7 @@
     },
     {
       id: 4,
-      title: 'A Full 40 Page Magazine',
+      title: 'A Full 40-Page Magazine',
       year: '2024',
       category: 'Layout Design, Cover Design, Editorial Design',
       tools: 'Camera, Photoshop, InDesign, Illustrator',
@@ -232,6 +232,17 @@
 
   radioBtns.forEach((btn, i) => {
     btn.addEventListener('click', () => goToSlide(i));
+  });
+
+  slides.forEach(slide => {
+    const img = slide.querySelector('.slide-inner');
+    img.addEventListener('click', () => {
+      const projectId = parseInt(slide.dataset.projectId, 10);
+      const projectIndex = projects.findIndex(p => p.id === projectId);
+      if (projectIndex === -1) return;
+      showPage('portfolio');
+      openDetail(projects[projectIndex], projectIndex);
+    });
   });
 
   updateSlideMeta();
